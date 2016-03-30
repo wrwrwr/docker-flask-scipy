@@ -2,6 +2,7 @@ FROM python:alpine
 
 MAINTAINER wrwrwr <docker@wr.waw.pl>
 
+# The provided Gunicorn configuration specifies this port.
 EXPOSE 8192
 
 # We need the testing repository for OpenBLAS and its dependencies.
@@ -10,13 +11,15 @@ ADD apk-repositories.txt /etc/apk/repositories
 # NumPy needs (a line of) patching to link against musl.
 ADD numpy-musl.patch /tmp/numpy-musl.patch
 
-# Packages needed to build NumPy and SciPy.
+# Packages needed to build NumPy and SciPy, with runtime dependencies
+# explicitely named (so they do not get removed during clean up).
 RUN apk add --no-cache \
         fortify-headers \
         g++ \
         gcc \
         gfortran \
         libc-dev \
+        libstdc++ \
         musl-dev \
         openblas@testing \
         openblas-dev@testing \
@@ -43,7 +46,7 @@ RUN apk add --no-cache \
         gfortran \
         libc-dev \
         musl-dev \
-        openblas-dev@testing \
+        openblas-dev \
         pkgconf \
         pkgconfig \
 # Clean up (apk and pip caches, NumPy sources, precompiled bytecode).
