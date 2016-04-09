@@ -25,6 +25,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install --yes \
         libatlas-dev \
         liblapack-dev \
     && rm -rf \
+        /root/.cache/* \
         /var/lib/apt/lists/*
 
 # An example Gunicorn configuration (to be used through --config).
