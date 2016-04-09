@@ -34,11 +34,11 @@ COPY gunicorn-config.py /etc/gunicorn/config.py
 # The provided Gunicorn configuration specifies this port.
 EXPOSE 8192
 
-# Add application start scripts to /etc/service/<app>/:
+# Add application start scripts as /etc/service/<app>/run:
 #
 #    COPY run.sh /etc/service/app/run
 #
-# The script would contain something like:
+# The "run" script could contain something like:
 #
 #    #!/usr/bin/env bash
 #
