@@ -32,7 +32,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install --yes \
 COPY gunicorn-config.py /etc/gunicorn/config.py
 
 # The provided Gunicorn configuration specifies this port.
-EXPOSE 8192
+EXPOSE 80
 
 # Add application start scripts as /etc/service/<app>/run:
 #

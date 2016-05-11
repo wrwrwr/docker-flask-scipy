@@ -1,4 +1,4 @@
-bind = '0.0.0.0:8192'
+bind = '0.0.0.0:80'
 workers = 4
 worker_class = 'gevent'
 max_requests = 1048576
