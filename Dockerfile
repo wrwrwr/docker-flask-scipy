@@ -45,5 +45,5 @@ EXPOSE 80
 #    cd /app
 #    gunicorn --config /etc/gunicorn/config.py app:app
 
-COPY ./runit.sh /runit.sh
+COPY runit.sh /runit.sh
 ENTRYPOINT ["/runit.sh"]
